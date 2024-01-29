@@ -3,6 +3,7 @@ AMD CPU fix works on all settings
 </br>
 
 # TODO
+[Particle] Check the list of values for precision rather (v4 <= n) so that others particle aren't affected. 
 </br>
 
 # Changes
