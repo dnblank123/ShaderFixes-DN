@@ -1,0 +1,113 @@
+  while (true) {
+    r5.w = cmp(1 >= (int)r5.z);
+    if (r5.w == 0) break;
+    r5.w = -1;
+    r6.x = r4.w;
+    r6.y = r5.w;
+    while (true) {
+      r6.z = cmp(1 >= (int)r6.y);
+      if (r6.z == 0) break;
+      r7.x = (int)r5.z;
+      r7.y = (int)r6.y;
+      r6.zw = r7.xy / r5.xy;
+      r7.xy = r5.xy;
+      r6.zw = r6.zw + r4.xy;
+      r7.z = r0.w;
+      r7.w = r3.y;
+      r8.xy = float2(1,1) / r7.xy;
+      r8.zw = r6.zw * r7.xy;
+      r8.zw = float2(0.5,0.5) + r8.zw;
+      r8.zw = frac(r8.zw);
+      r6.zw = r6.zw * r7.xy;
+      r6.zw = float2(0.5,0.5) + r6.zw;
+      r6.zw = floor(r6.zw);
+      r6.zw = r6.zw / r7.xy;
+      r7.xy = float2(0,0) * r8.xy;
+      r7.xy = r7.xy + r6.zw;
+      r7.z = r7.z;
+      r7.w = r7.w;
+      r7.xy = r7.xy;
+      r7.x = t15.Sample(s15_s, r7.xy).x;
+      r7.x = r7.x;
+      r7.x = r7.x;
+      if (r7.w == 0) {
+        r7.y = cb0[21].x + r7.x;
+        r7.y = cmp(r7.z >= r7.y);
+        r7.y = r7.y ? 1 : 0;
+      } else {
+        r7.x = cb0[21].y + r7.x;
+        r7.x = cmp(r7.z >= r7.x);
+        r7.y = r7.x ? 1 : 0;
+      }
+      r7.y = r7.y;
+      r7.y = r7.y;
+      r9.xy = float2(0,1) * r8.xy;
+      r9.xy = r9.xy + r6.zw;
+      r9.xy = r9.xy;
+      r7.x = t15.Sample(s15_s, r9.xy).x;
+      r7.x = r7.x;
+      r7.x = r7.x;
+      if (r7.w == 0) {
+        r9.x = cb0[21].x + r7.x;
+        r9.x = cmp(r7.z >= r9.x);
+        r9.x = r9.x ? 1 : 0;
+      } else {
+        r7.x = cb0[21].y + r7.x;
+        r7.x = cmp(r7.z >= r7.x);
+        r9.x = r7.x ? 1 : 0;
+      }
+      r9.x = r9.x;
+      r9.x = r9.x;
+      r9.yz = float2(1,0) * r8.xy;
+      r9.yz = r9.yz + r6.zw;
+      r9.yz = r9.yz;
+      r7.x = t15.Sample(s15_s, r9.yz).x;
+      r7.x = r7.x;
+      r7.x = r7.x;
+      if (r7.w == 0) {
+        r9.y = cb0[21].x + r7.x;
+        r9.y = cmp(r7.z >= r9.y);
+        r9.y = r9.y ? 1 : 0;
+      } else {
+        r7.x = cb0[21].y + r7.x;
+        r7.x = cmp(r7.z >= r7.x);
+        r9.y = r7.x ? 1 : 0;
+      }
+      r9.y = r9.y;
+      r9.y = r9.y;
+      r8.xy = float2(1,1) * r8.xy;
+      r6.zw = r8.xy + r6.zw;
+      r6.zw = r6.zw;
+      r6.z = t15.Sample(s15_s, r6.zw).x;
+      r6.z = r6.z;
+      r6.z = r6.z;
+      if (r7.w == 0) {
+        r6.w = cb0[21].x + r6.z;
+        r6.w = cmp(r7.z >= r6.w);
+        r6.w = r6.w ? 1 : 0;
+      } else {
+        r6.z = cb0[21].y + r6.z;
+        r6.z = cmp(r7.z >= r6.z);
+        r6.w = r6.z ? 1 : 0;
+      }
+      r6.w = r6.w;
+      r6.w = r6.w;
+      r6.z = -r7.y;
+      r6.z = r9.x + r6.z;
+      r6.z = r8.w * r6.z;
+      r6.z = r7.y + r6.z;
+      r7.x = -r9.y;
+      r6.w = r7.x + r6.w;
+      r6.w = r8.w * r6.w;
+      r6.w = r9.y + r6.w;
+      r7.x = -r6.z;
+      r6.w = r7.x + r6.w;
+      r6.w = r8.z * r6.w;
+      r6.z = r6.z + r6.w;
+      r6.z = r6.z;
+      r6.x = r6.x + r6.z;
+      r6.y = (int)r6.y + 1;
+    }
+    r4.w = r6.x;
+    r5.z = (int)r5.z + 1;
+  }

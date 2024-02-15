@@ -1,0 +1,81 @@
+// ---- Created with 3Dmigoto v1.3.16 on Sat Feb 10 15:39:15 2024
+Texture2D<float4> t7 : register(t7);
+
+Texture2D<float4> t0 : register(t0);
+
+SamplerState s7_s : register(s7);
+
+SamplerState s0_s : register(s0);
+
+cbuffer cb0 : register(b0)
+{
+  float4 cb0[71];
+}
+
+
+
+
+// 3Dmigoto declarations
+#define cmp -
+
+float sqrt1(const float n)
+{
+    int i;
+    float f;
+    i = 0x5F375A86 - (asint(n) >> 1);
+    f = asfloat(i);
+    return 1.0f / ((3 - n * f * f) * n * f * 0.5);
+}
+float q_rsqrt(float number)
+{
+    uint conv;
+    conv = 0x5F1FFFF9 - (asuint(number) >> 1);
+    float x = asfloat(conv);
+    return x * (0.703952253 * (2.38924456 - number * x * x));
+}
+
+
+void main(
+  float4 v0 : SV_POSITION0,
+  float v1 : CLIPDISTANCE0,
+  float3 w1 : TEXCOORD7,
+  float v2 : DEPTHVALUE0,
+  float2 w2 : TEXCOORD0,
+  float4 v3 : FOGFACTOR0,
+  float4 v4 : TEXCOORD6,
+  float3 v5 : TEXCOORD4,
+  float3 v6 : WORLDVIEWNORMAL0,
+  float3 v7 : WORLDVIEWPOSITION0,
+  out float4 o0 : SV_TARGET0)
+{
+  float4 r0,r1,r2;
+  uint4 bitmask, uiDest;
+  float4 fDest;
+
+  r0.xy = t7.Sample(s7_s, w2.xy).xw;
+  r0.zw = cb0[70].xy * cb0[1].xx;
+  r0.xz = r0.zw * r0.xx + w2.xy;
+  r1.xyzw = t0.Sample(s0_s, r0.xz).xyzw;
+  r0.x = cb0[68].w * r1.w;
+  r0.x = r0.x * r0.y;
+  r0.y = cmp(r0.x < cb0[0].x);
+  if (r0.y != 0) discard;
+  r0.y = dot(v6.xyz, v6.xyz);
+  r0.y = q_rsqrt(r0.y);
+  r0.yzw = v6.xyz * r0.yyy;
+  r1.w = dot(-v7.xyz, -v7.xyz);
+  r0.y = dot(r0.yzw, -cb0[28].xyz);
+  r0.y = cb0[26].y + r0.y;
+  r0.z = -0.5 + r0.z;
+  r0.w = 1 + -r0.y;
+  r0.w = 1;
+  r0.z = r0.z * r1.w + 1;
+  r2.xyz = cb0[33].xyz * r0.www;
+  r0.yzw = r2.xyz * r0.yyy;
+  r2.xyz = cb0[68].xyz * cb0[25].xyz;
+  r0.yzw = cb0[69].xyz * r0.yzw + r2.xyz;
+  r0.yzw = r0.yzw * r1.xyz + -r2.xyz;
+  o0.xyz = v3.zzz * r0.yzw + r2.xyz;
+  o0.w = r0.x;
+  return;
+}
