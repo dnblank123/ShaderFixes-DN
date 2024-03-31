@@ -492,7 +492,7 @@
   // // r3.xyz = float3(-1,-1,-1);
   // // r2.xyw = r3.xyz + r2.xyw;
   // // r2.xyw = r2.xyw * r1.www;
-  // r2.xyw = 1;//float3(1,1,1) + r2.xyw;
+  // r2.xyw = 0.91;//float3(1,1,1) + r2.xyw;
   // // r2.xyw = r2.xyw;
   // // r2.z = r2.z;
   // // r1.xyz = r1.xyz;
@@ -658,7 +658,8 @@ mov r0.y, -v8.z
 sample_indexable(texture2d)(float,float,float,float) r0.xyz, r0.xyxx, t8.xyzw, s8
 mul r0.xyz, r2.yyyy, r0.xyzx
 mov r0.w, l(0)
-add o0.xyzw, r4.xyzw, r0.xyzw
+add r0.xyzw, r4.xyzw, r0.xyzw
+mul o0.xyzw, r0.xyzw, l(0.910000, 0.910000, 0.910000, 1.000000)
 mov o1.xyzw, l(0,0,0,0)
 ret 
-// Approximately 60 instruction slots used
+// Approximately 61 instruction slots used
