@@ -265,7 +265,7 @@
   // // r1.x = frac(r1.x);
   // // r1.x = r1.x;
   // // r1.y = v8.y;
-  // // r3.xyzw = t8.Sample(s8_s, r1.xy).xyzw;
+  // r3.xyzw = t8.Sample(s8_s, r1.xy).xyzw;
   // r3.xyzw = r3.xyzw;
   // r2.xyz = r3.xyz * r2.yyy;
   // r2.w = 0;//0 * r3.w;
@@ -549,8 +549,10 @@
 // ------------------------------ ---------- ------- ----------- -------------- ------
 // s0_s                              sampler      NA          NA             s0      1 
 // s7_s                              sampler      NA          NA             s7      1 
+// s8_s                              sampler      NA          NA             s8      1 
 // t0                                texture  float4          2d             t0      1 
 // t7                                texture  float4          2d             t7      1 
+// t8                                texture  float4          2d             t8      1 
 // cb0                               cbuffer      NA          NA            cb0      1 
 //
 //
@@ -569,7 +571,7 @@
 // TANGENT                  0   xyz         5     NONE   float       
 // TEXCOORD                 0   xyzw        6     NONE   float   xy  
 // TEXCOORD                 1   xyzw        7     NONE   float   x   
-// TEXCOORD                 2   xyzw        8     NONE   float       
+// TEXCOORD                 2   xyzw        8     NONE   float   x z 
 // TEXCOORD                 4   xyz         9     NONE   float       
 // WORLDVIEWNORMAL          0   xyz        10     NONE   float   xyz 
 // WORLDVIEWPOSITION        0   xyz        11     NONE   float   xyz 
@@ -587,10 +589,13 @@ dcl_globalFlags refactoringAllowed
 dcl_constantbuffer CB0[77], dynamicIndexed
 dcl_sampler s0, mode_default
 dcl_sampler s7, mode_default
+dcl_sampler s8, mode_default
 dcl_resource_texture2d (float,float,float,float) t0
 dcl_resource_texture2d (float,float,float,float) t7
+dcl_resource_texture2d (float,float,float,float) t8
 dcl_input_ps linear v6.xy
 dcl_input_ps linear v7.x
+dcl_input_ps linear v8.xz
 dcl_input_ps linear v10.xyz
 dcl_input_ps linear v11.xyz
 dcl_output o0.xyzw
@@ -645,11 +650,15 @@ add r1.w, r1.w, l(68.000000)
 ftou r1.w, r1.w
 mul r3.xyz, r1.xyzx, r0.yzwy
 mul r4.w, r0.x, cb0[44].w
-mul r2.xyzw, r2.yyyx, cb0[r1.w + 0].xyzw
-mad r0.xyz, -r0.yzwy, r1.xyzx, cb0[r1.w + 0].xyzx
-mad r4.xyz, r0.xyzx, r2.wwww, r3.xyzx
-mov r2.w, l(0)
-add o0.xyzw, r4.xyzw, r2.xyzw
+mul r0.x, r2.x, cb0[r1.w + 0].w
+mad r0.yzw, -r0.yyzw, r1.xxyz, cb0[r1.w + 0].xxyz
+mad r4.xyz, r0.yzwy, r0.xxxx, r3.xyzx
+mov r0.x, |v8.x|
+mov r0.y, -v8.z
+sample_indexable(texture2d)(float,float,float,float) r0.xyz, r0.xyxx, t8.xyzw, s8
+mul r0.xyz, r2.yyyy, r0.xyzx
+mov r0.w, l(0)
+add o0.xyzw, r4.xyzw, r0.xyzw
 mov o1.xyzw, l(0,0,0,0)
 ret 
-// Approximately 56 instruction slots used
+// Approximately 60 instruction slots used
