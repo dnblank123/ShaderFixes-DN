@@ -1,0 +1,655 @@
+// // player body
+// Texture2D<float4> t15 : register(t15);
+
+// Texture2D<float4> t8 : register(t8);
+
+// Texture2D<float4> t7 : register(t7);
+
+// Texture2D<float4> t0 : register(t0);
+
+// SamplerState s15_s : register(s15);
+
+// SamplerState s8_s : register(s8);
+
+// SamplerState s7_s : register(s7);
+
+// SamplerState s0_s : register(s0);
+
+// cbuffer cb0 : register(b0)
+// {
+  // float4 cb0[77];
+// }
+
+
+
+
+// // 3Dmigoto declarations
+// #define cmp -
+
+
+// void main(
+  // float4 v0 : SV_POSITION0,
+  // float3 v1 : BINORMAL0,
+  // float w1 : CLIPDISTANCE0,
+  // float3 v2 : TEXCOORD7,
+  // float w2 : DEPTHVALUE0,
+  // float4 v3 : FOGFACTOR0,
+  // float4 v4 : TEXCOORD6,
+  // float3 v5 : TANGENT0,
+  // float4 v6 : TEXCOORD0,
+  // float4 v7 : TEXCOORD1,
+  // float4 v8 : TEXCOORD2,
+  // float3 v9 : TEXCOORD4,
+  // float3 v10 : WORLDVIEWNORMAL0,
+  // float3 v11 : WORLDVIEWPOSITION0,
+  // out float4 o0 : SV_TARGET0,
+  // out float4 o1 : SV_TARGET1)
+// {
+  // float4 r0,r1,r2,r3,r4,r5,r6,r7,r8;
+  // uint4 bitmask, uiDest;
+  // float4 fDest;
+
+  // r0.xyz = int3(0,0,0);
+  // r0.xyz = r0.xyz;
+  // r0.w = dot(v10.xyz, v10.xyz);
+  // r0.w = rsqrt(r0.w);
+  // r1.xyz = v10.xyz * r0.www;
+  // r2.xyz = v11.xyz;
+  // r3.xyz = -r2.xyz;
+  // r0.w = dot(r3.xyz, r3.xyz);
+  // r0.w = rsqrt(r0.w);
+  // r3.xyz = r3.xyz * r0.www;
+  // r0.w = dot(r1.xyz, r3.xyz);
+  // r0.w = max(0, r0.w);
+  // r0.w = min(1, r0.w);
+  // r1.xyz = r1.xyz;
+  // r3.xyz = r3.xyz;
+  // r0.w = r0.w;
+  // r4.xyz = -cb0[4].xyz;
+  // r3.xyz = r4.xyz + r3.xyz;
+  // r1.w = dot(r3.xyz, r3.xyz);
+  // r1.w = rsqrt(r1.w);
+  // r3.xyz = r3.xyz * r1.www;
+  // r1.xyz = r1.xyz;
+  // r4.xyz = -cb0[4].xyz;
+  // r1.w = cb0[2].y;
+  // r1.w = r1.w;
+  // r2.w = dot(r1.xyz, r4.xyz);
+  // r2.w = r2.w + r1.w;
+  // r3.w = 1;
+  // r1.w = r3.w + r1.w;
+  // r1.w = r2.w;//r2.w / r1.w;
+  // r1.w = max(0, r1.w);
+  // r1.w = min(1, r1.w);
+  // r1.w = r1.w;
+  // r1.w = r1.w;
+  // r4.xyz = -cb0[4].xyz;
+  // r2.w = dot(r4.xyz, r3.xyz);
+  // r2.w = max(0, r2.w);
+  // r2.w = min(1, r2.w);
+  // r3.x = 2;
+  // r3.x = r3.x * r2.w;
+  // r2.w = r3.x * r2.w;
+  // r3.x = cb0[2].z;
+  // r2.w = r3.x * r2.w;
+  // r2.w = 0.5 + r2.w;
+  // r3.x = 1;
+  // r3.y = 1;
+  // r3.y = -r3.y;
+  // r3.y = r3.y + r2.w;
+  // r3.z = 1;
+  // r3.w = -r1.w;
+  // r3.z = r3.z + r3.w;
+  // r3.w = 1;
+  // r3.w = r3.w * r3.z;
+  // r3.z = r3.z * r3.z;
+  // r3.z = r3.z * r3.z;
+  // r3.z = r3.w * r3.z;
+  // r3.y = r3.y * r3.z;
+  // r3.x = r3.x + r3.y;
+  // r3.y = 1;
+  // r3.z = 1;
+  // r3.z = -r3.z;
+  // r2.w = r3.z + r2.w;
+  // r3.z = 1;
+  // r0.w = -r0.w;
+  // r0.w = r3.z + r0.w;
+  // r3.z = 1;
+  // r3.z = r3.z * r0.w;
+  // r0.w = r0.w * r0.w;
+  // r0.w = r0.w * r0.w;
+  // r0.w = r3.z * r0.w;
+  // r0.w = r2.w * r0.w;
+  // r0.w = r3.y + r0.w;
+  // r3.xyz = cb0[9].xyz * r3.xxx;
+  // r3.xyz = r3.xyz * r0.www;
+  // r3.xyz = r3.xyz * r1.www;
+  // r0.w = cb0[2].x;
+  // r3.xyz = r3.xyz * r0.www;
+  // r0.xyz = r3.xyz + r0.xyz;
+  // r0.w = (int)cb0[3].y;
+  // r0.w = r0.w;
+  // r1.w = 0;
+  // r3.xyz = r0.xyz;
+  // r2.w = r1.w;
+  // // while (true) {
+    // // r3.w = cmp((int)r2.w < (int)r0.w);
+    // // if (r3.w == 0) break;
+    // // r3.w = r2.w;
+    // // r4.xyz = r1.xyz;
+    // // r5.xyz = r2.xyz;
+    // // r5.xyz = -r5.xyz;
+    // // r5.xyz = cb0[r3.w+14].xyz + r5.xyz;
+    // // r4.w = dot(r5.xyz, r5.xyz);
+    // // r4.w = sqrt(r4.w);
+    // // r5.w = cb0[r3.w+14].w * r4.w;
+    // // r5.w = -r5.w;
+    // // r5.w = 1 + r5.w;
+    // // r5.w = max(0, r5.w);
+    // // r5.xyz = r5.xyz / r4.www;
+    // // r4.x = dot(r4.xyz, r5.xyz);
+    // // r4.x = max(0, r4.x);
+    // // r4.x = min(1, r4.x);
+    // // r4.xyz = cb0[r3.w+19].xyz * r4.xxx;
+    // // r4.xyz = r4.xyz * r5.www;
+    // // r4.xyz = r4.xyz;
+    // // r3.xyz = r4.xyz + r3.xyz;
+    // // r2.w = (int)r2.w + 1;
+  // // }
+  // r0.x = (int)cb0[3].z;
+  // r0.x = r0.x;
+  // r0.y = 0;
+  // r4.xyz = r3.xyz;
+  // r0.z = r0.y;
+  // // while (true) {
+    // // r0.w = cmp((int)r0.z < (int)r0.x);
+    // // if (r0.w == 0) break;
+    // // r5.xyz = -r2.xyz;
+    // // r5.xyz = cb0[r0.z+29].xyz + r5.xyz;
+    // // r0.w = dot(r5.xyz, r5.xyz);
+    // // r0.w = sqrt(r0.w);
+    // // r5.xyz = r5.xyz / r0.www;
+    // // r6.xyz = -cb0[r0.z+24].xyz;
+    // // r1.w = dot(r6.xyz, r5.xyz);
+    // // r0.w = cmp(cb0[r0.z+29].w >= r0.w);
+    // // if (r0.w != 0) {
+      // // r0.w = -cb0[r0.z+39].w;
+      // // r0.w = r1.w + r0.w;
+      // // r0.w = r0.w / cb0[r0.z+34].w;
+      // // r0.w = max(0, r0.w);
+      // // r0.w = min(1, r0.w);
+      // // r0.w = log2(r0.w);
+      // // r0.w = cb0[r0.z+24].w * r0.w;
+      // // r0.w = exp2(r0.w);
+    // // } else {
+      // // r0.w = 0;
+    // // }
+    // // r1.w = 0;
+    // // r2.w = dot(r1.xyz, r5.xyz);
+    // // r1.w = max(r2.w, r1.w);
+    // // r5.xyz = cb0[r0.z+34].xyz * r1.www;
+    // // r5.xyz = r5.xyz * r0.www;
+    // // r4.xyz = r5.xyz + r4.xyz;
+    // // r0.z = (int)r0.z + 1;
+  // // }
+  // r4.xyz = r4.xyz;
+  // r4.xyz = r4.xyz;
+  // r0.xyz = cb0[44].xyz * cb0[1].xyz;
+  // r1.xyz = cb0[45].xyz * r4.xyz;
+  // r0.xyz = r1.xyz + r0.xyz;
+  // r0.w = cb0[44].w;
+  // r1.xyzw = t0.Sample(s0_s, v6.xy).xyzw;
+  // r1.xyzw = r1.xyzw;
+  // r2.xyz = t7.Sample(s7_s, v6.xy).xyz;
+  // r2.xyz = r2.xyz;
+  // r2.xyz = r2.xyz;
+  // r3.xyz = cb0[73].www * r1.xyz;
+  // r4.xyz = -cb0[76].xyz;
+  // r3.xyz = r4.xyz + r3.xyz;
+  // r3.xyz = r3.xyz * r3.xyz;
+  // r3.xyz = -r3.xyz;
+  // r3.xyz = cb0[75].xyz + r3.xyz;
+  // r3.xyz = sqrt(r3.xyz);
+  // r3.xyz = cb0[74].xyz * r3.xyz;
+  // r3.xyz = -r3.xyz;
+  // r3.xyz = cb0[73].xyz + r3.xyz;
+  // r4.xyz = -r1.xyz;
+  // r3.xyz = r4.xyz + r3.xyz;
+  // r3.xyz = r3.xyz * r2.zzz;
+  // r1.xyz = r3.xyz + r1.xyz;
+  // r2.z = (uint)v7.x;
+  // r3.xyzw = cb0[r2.z+68].xyzw;
+  // r0.xyzw = r1.xyzw * r0.xyzw;
+  // r1.x = r3.w * r2.x;
+  // r2.xzw = -r0.xyz;
+  // r2.xzw = r3.xyz + r2.xzw;
+  // r1.xyz = r2.xzw * r1.xxx;
+  // r0.xyz = r1.xyz + r0.xyz;
+  // r1.x = -v8.x;
+  // r1.x = max(v8.x, r1.x);
+  // r1.y = -v8.z;
+  // r1.z = max(v8.z, r1.y);
+  // r2.x = min(r1.x, r1.z);
+  // r2.z = max(r1.x, r1.z);
+  // // r2.z = 1 / r2.z;
+  // // r2.x = r2.x * r2.z;
+  // // r2.z = r2.x * r2.x;
+  // // r2.w = 0.0208350997 * r2.z;
+  // // r2.w = -0.0851330012 + r2.w;
+  // // r2.w = r2.z * r2.w;
+  // // r2.w = 0.180141002 + r2.w;
+  // // r2.w = r2.z * r2.w;
+  // // r2.w = -0.330299497 + r2.w;
+  // // r2.z = r2.z * r2.w;
+  // // r2.z = 0.999866009 + r2.z;
+  // // r2.x = r2.x * r2.z;
+  // // r1.x = cmp(r1.z < r1.x);
+  // // r1.z = -2 * r2.x;
+  // // r1.z = 1.57079637 + r1.z;
+  // // r1.x = r1.x ? r1.z : 0;
+  // // r1.x = r1.x + r2.x;
+  // // r1.y = cmp(v8.z < r1.y);
+  // // r1.y = r1.y ? -3.141593 : 0;
+  // // r1.x = r1.x + r1.y;
+  // // r1.y = min(v8.x, v8.z);
+  // // r1.z = max(v8.x, v8.z);
+  // // r2.x = -r1.y;
+  // // r1.y = cmp(r1.y < r2.x);
+  // // r2.x = -r1.z;
+  // // r1.z = cmp(r1.z >= r2.x);
+  // // r1.y = r1.z ? r1.y : 0;
+  // // r1.z = -r1.x;
+  // // r1.x = r1.y ? r1.z : r1.x;
+  // // r1.x = r1.x / 6.28318548;
+  // // r1.x = 1 + r1.x;
+  // // r1.x = frac(r1.x);
+  // // r1.x = r1.x;
+  // // r1.y = v8.y;
+  // // r3.xyzw = t8.Sample(s8_s, r1.xy).xyzw;
+  // r3.xyzw = r3.xyzw;
+  // r2.xyz = r3.xyz * r2.yyy;
+  // r2.w = 0;//0 * r3.w;
+  // r0.xyzw = r2.xyzw + r0.xyzw;
+  // r0.xyzw = r0.xyzw;
+  // r1.x = cmp(r1.w < cb0[0].x);
+  // if (r1.x != 0) {
+    // if (-1 != 0) discard;
+  // }
+  // // r1.xyz = v4.xyz;
+  // // r1.w = v4.w;
+  // // r1.w = r1.w;
+  // // r2.x = -1;
+  // // r2.x = (int)r2.x + asint(cb0[62].x);
+  // // r2.y = -r1.w;
+  // // r1.w = max(r2.y, r1.w);
+  // // r2.y = cmp(r1.w < cb0[63].x);
+  // // if (r2.y != 0) {
+    // // r2.z = 0;
+  // // }
+  // // if (r2.y == 0) {
+    // // r2.y = cmp(r1.w < cb0[63].y);
+    // // if (r2.y != 0) {
+      // // r2.z = 1;
+    // // }
+    // // if (r2.y == 0) {
+      // // r1.w = cmp(r1.w < cb0[63].z);
+      // // if (r1.w != 0) {
+        // // r2.z = 2;
+      // // }
+      // // if (r1.w == 0) {
+        // // r2.z = r2.x;
+      // // }
+    // // }
+  // // }
+  // // r2.z = r2.z;
+  // // r1.w = (int)r2.z * 4;
+  // // r3.xyzw = cb0[r1.w+46].xyzw * r1.xxxx;
+  // // r4.xyzw = cb0[r1.w+47].xyzw * r1.yyyy;
+  // // r3.xyzw = r4.xyzw + r3.xyzw;
+  // // r4.xyzw = cb0[r1.w+48].xyzw * r1.zzzz;
+  // // r3.xyzw = r4.xyzw + r3.xyzw;
+  // // r1.xyzw = cb0[r1.w+49].xyzw * float4(1,1,1,1);
+  // // r1.xyzw = r3.xywz + r1.xywz;
+  // // r1.w = r1.w / r1.z;
+  // // r2.xy = float2(0.5,0.5) * r1.xy;
+  // // r2.xy = r2.xy / r1.zz;
+  // // r2.xy = float2(0.5,0.5) + r2.xy;
+  // // r2.y = -r2.y;
+  // // r2.y = 1 + r2.y;
+  // // r2.x = r2.x;
+  // // r2.y = r2.y;
+  // // r2.z = r2.z;
+  // // r3.xy = float2(1,1);
+  // // r2.w = cmp(1 < asint(cb0[62].x));
+  // // if (r2.w != 0) {
+    // // r3.x = 0.5;
+  // // }
+  // // r2.w = cmp(2 < asint(cb0[62].x));
+  // // if (r2.w != 0) {
+    // // r3.y = 0.5;
+  // // }
+  // // r2.w = 2;
+  // // r2.w = (uint)r2.z % (uint)r2.w;
+  // // r2.w = (int)r2.w;
+  // // r2.x = r2.w + r2.x;
+  // // r4.x = r2.x * r3.x;
+  // // r2.x = 0;
+  // // r2.w = 1;
+  // // r2.w = cmp((uint)r2.w < (uint)r2.z);
+  // // if (r2.w != 0) {
+    // // r2.x = 1;
+  // // }
+  // // r2.x = (int)r2.x;
+  // // r2.x = r2.x + r2.y;
+  // // r4.y = r2.x * r3.y;
+  // // r4.x = r4.x;
+  // // r4.y = r4.y;
+  // // r4.xy = r4.xy;
+  // // r2.x = cmp(0 < cb0[67].z);
+  // // if (r2.x != 0) {
+    // // r2.x = max(0, cb0[67].z);
+    // // r2.x = min(1, r2.x);
+    // // r3.xyz = float3(-1,-1,-1);
+    // // r3.xyz = cb0[66].xyz + r3.xyz;
+    // // r2.xyw = r3.xyz * r2.xxx;
+    // // r2.xyw = float3(1,1,1) + r2.xyw;
+  // // } else {
+    // // r3.x = max(0, cb0[67].y);
+    // // r3.x = min(1, r3.x);
+    // // r3.yzw = float3(-1,-1,-1);
+    // // r3.yzw = cb0[65].xyz + r3.yzw;
+    // // r3.xyz = r3.xxx * r3.yzw;
+    // // r2.xyw = float3(1,1,1) + r3.xyz;
+  // // }
+  // // r2.xyw = r2.xyw;
+  // // r2.xyw = r2.xyw;
+  // // r4.xy = r4.xy;
+  // // r1.w = r1.w;
+  // // r2.z = r2.z;
+  // // r3.x = 0;
+  // // r3.y = asint(cb0[62].y);
+  // // r5.x = 2 * r3.y;
+  // // r3.y = asint(cb0[62].y);
+  // // r5.y = 2 * r3.y;
+  // // r3.y = -1;
+  // // r3.z = r3.x;
+  // // r3.w = r3.y;
+  // // while (true) {
+    // // r4.z = cmp(1 >= (int)r3.w);
+    // // if (r4.z == 0) break;
+    // // r4.z = -1;
+    // // r4.w = r3.z;
+    // // r5.z = r4.z;
+    // // while (true) {
+      // // r5.w = cmp(1 >= (int)r5.z);
+      // // if (r5.w == 0) break;
+      // // r6.x = (int)r3.w;
+      // // r6.y = (int)r5.z;
+      // // r6.xy = r6.xy / r5.xy;
+      // // r6.zw = r5.xy;
+      // // r6.xy = r6.xy + r4.xy;
+      // // r5.w = r1.w;
+      // // r7.x = r2.z;
+      // // r7.yz = float2(1,1) / r6.zw;
+      // // r8.xy = r6.xy * r6.zw;
+      // // r8.xy = float2(0.5,0.5) + r8.xy;
+      // // r8.xy = frac(r8.xy);
+      // // r6.xy = r6.xy * r6.zw;
+      // // r6.xy = float2(0.5,0.5) + r6.xy;
+      // // r6.xy = floor(r6.xy);
+      // // r6.xy = r6.xy / r6.zw;
+      // // r6.zw = float2(0,0) * r7.yz;
+      // // r6.zw = r6.xy + r6.zw;
+      // // r5.w = r5.w;
+      // // r7.x = r7.x;
+      // // r6.zw = r6.zw;
+      // // r6.z = t15.Sample(s15_s, r6.zw).x;
+      // // r6.z = r6.z;
+      // // r6.z = r6.z;
+      // // if (r7.x == 0) {
+        // // r6.w = cb0[64].x + r6.z;
+        // // r6.w = cmp(r5.w >= r6.w);
+        // // r6.w = r6.w ? 1 : 0;
+      // // } else {
+        // // r6.z = cb0[64].y + r6.z;
+        // // r6.z = cmp(r5.w >= r6.z);
+        // // r6.w = r6.z ? 1 : 0;
+      // // }
+      // // r6.w = r6.w;
+      // // r6.w = r6.w;
+      // // r8.zw = float2(0,1) * r7.yz;
+      // // r8.zw = r8.zw + r6.xy;
+      // // r8.zw = r8.zw;
+      // // r6.z = t15.Sample(s15_s, r8.zw).x;
+      // // r6.z = r6.z;
+      // // r6.z = r6.z;
+      // // if (r7.x == 0) {
+        // // r7.w = cb0[64].x + r6.z;
+        // // r7.w = cmp(r5.w >= r7.w);
+        // // r7.w = r7.w ? 1 : 0;
+      // // } else {
+        // // r6.z = cb0[64].y + r6.z;
+        // // r6.z = cmp(r5.w >= r6.z);
+        // // r7.w = r6.z ? 1 : 0;
+      // // }
+      // // r7.w = r7.w;
+      // // r7.w = r7.w;
+      // // r8.zw = float2(1,0) * r7.yz;
+      // // r8.zw = r8.zw + r6.xy;
+      // // r8.zw = r8.zw;
+      // // r6.z = t15.Sample(s15_s, r8.zw).x;
+      // // r6.z = r6.z;
+      // // r6.z = r6.z;
+      // // if (r7.x == 0) {
+        // // r8.z = cb0[64].x + r6.z;
+        // // r8.z = cmp(r5.w >= r8.z);
+        // // r8.z = r8.z ? 1 : 0;
+      // // } else {
+        // // r6.z = cb0[64].y + r6.z;
+        // // r6.z = cmp(r5.w >= r6.z);
+        // // r8.z = r6.z ? 1 : 0;
+      // // }
+      // // r8.z = r8.z;
+      // // r8.z = r8.z;
+      // // r7.yz = float2(1,1) * r7.yz;
+      // // r6.xy = r7.yz + r6.xy;
+      // // r6.xy = r6.xy;
+      // // r6.x = t15.Sample(s15_s, r6.xy).x;
+      // // r6.x = r6.x;
+      // // r6.x = r6.x;
+      // // if (r7.x == 0) {
+        // // r6.y = cb0[64].x + r6.x;
+        // // r6.y = cmp(r5.w >= r6.y);
+        // // r6.y = r6.y ? 1 : 0;
+      // // } else {
+        // // r6.x = cb0[64].y + r6.x;
+        // // r5.w = cmp(r5.w >= r6.x);
+        // // r6.y = r5.w ? 1 : 0;
+      // // }
+      // // r6.y = r6.y;
+      // // r6.y = r6.y;
+      // // r5.w = -r6.w;
+      // // r5.w = r7.w + r5.w;
+      // // r5.w = r8.y * r5.w;
+      // // r5.w = r6.w + r5.w;
+      // // r6.x = -r8.z;
+      // // r6.x = r6.y + r6.x;
+      // // r6.x = r8.y * r6.x;
+      // // r6.x = r8.z + r6.x;
+      // // r6.y = -r5.w;
+      // // r6.x = r6.x + r6.y;
+      // // r6.x = r8.x * r6.x;
+      // // r5.w = r6.x + r5.w;
+      // // r5.w = r5.w;
+      // // r4.w = r5.w + r4.w;
+      // // r5.z = (int)r5.z + 1;
+    // // }
+    // // r3.z = r4.w;
+    // // r3.w = (int)r3.w + 1;
+  // // }
+  // // r1.w = r3.z / 9;
+  // // r1.w = r1.w;
+  // // r3.xyz = float3(-1,-1,-1);
+  // // r2.xyw = r3.xyz + r2.xyw;
+  // // r2.xyw = r2.xyw * r1.www;
+  // r2.xyw = 1;//float3(1,1,1) + r2.xyw;
+  // // r2.xyw = r2.xyw;
+  // // r2.z = r2.z;
+  // // r1.xyz = r1.xyz;
+  // // r2.xyw = r2.xyw;
+  // // r1.w = -1;
+  // // r1.w = (int)r1.w + asint(cb0[62].x);
+  // // r1.w = cmp((int)r1.w == (int)r2.z);
+  // // if (r1.w != 0) {
+    // // r1.xy = float2(0.5,0.5) * r1.xy;
+    // // r1.xy = r1.xy / r1.zz;
+    // // r1.xy = float2(0.5,0.5) + r1.xy;
+    // // r1.y = -r1.y;
+    // // r1.y = 1 + r1.y;
+    // // r1.z = cmp(r1.x < 0);
+    // // r1.x = cmp(1 < r1.x);
+    // // r1.x = (int)r1.x | (int)r1.z;
+    // // r1.z = cmp(r1.y < 0);
+    // // r1.x = (int)r1.z | (int)r1.x;
+    // // r1.y = cmp(1 < r1.y);
+    // // r1.x = (int)r1.y | (int)r1.x;
+    // // if (r1.x != 0) {
+      // // r2.xyw = int3(1,1,1);
+    // // }
+  // // }
+  // r2.xyw = r2.xyw;
+  // r2.xyw = r2.xyw;
+  // r0.xyz = r2.xyw * r0.xyz;
+  // r0.xyz = r0.xyz;
+  // r0.w = r0.w;
+  // r1.yzw = int3(0,0,0);
+  // r1.x = w2.x;
+  // o0.xyzw = r0.xyzw;
+  // o1.xyzw = 0;//r1.xyzw;
+  // return;
+// }
+
+//
+// Generated by Microsoft (R) HLSL Shader Compiler 10.0.10011.16384
+//
+//
+// Buffer Definitions: 
+//
+// cbuffer cb0
+// {
+//
+//   float4 cb0[77];                    // Offset:    0 Size:  1232
+//
+// }
+//
+//
+// Resource Bindings:
+//
+// Name                                 Type  Format         Dim      HLSL Bind  Count
+// ------------------------------ ---------- ------- ----------- -------------- ------
+// s0_s                              sampler      NA          NA             s0      1 
+// s7_s                              sampler      NA          NA             s7      1 
+// t0                                texture  float4          2d             t0      1 
+// t7                                texture  float4          2d             t7      1 
+// cb0                               cbuffer      NA          NA            cb0      1 
+//
+//
+//
+// Input signature:
+//
+// Name                 Index   Mask Register SysValue  Format   Used
+// -------------------- ----- ------ -------- -------- ------- ------
+// SV_POSITION              0   xyzw        0      POS   float       
+// BINORMAL                 0   xyz         1     NONE   float       
+// CLIPDISTANCE             0      w        1     NONE   float       
+// TEXCOORD                 7   xyz         2     NONE   float       
+// DEPTHVALUE               0      w        2     NONE   float       
+// FOGFACTOR                0   xyzw        3     NONE   float       
+// TEXCOORD                 6   xyzw        4     NONE   float       
+// TANGENT                  0   xyz         5     NONE   float       
+// TEXCOORD                 0   xyzw        6     NONE   float   xy  
+// TEXCOORD                 1   xyzw        7     NONE   float   x   
+// TEXCOORD                 2   xyzw        8     NONE   float       
+// TEXCOORD                 4   xyz         9     NONE   float       
+// WORLDVIEWNORMAL          0   xyz        10     NONE   float   xyz 
+// WORLDVIEWPOSITION        0   xyz        11     NONE   float   xyz 
+//
+//
+// Output signature:
+//
+// Name                 Index   Mask Register SysValue  Format   Used
+// -------------------- ----- ------ -------- -------- ------- ------
+// SV_TARGET                0   xyzw        0   TARGET   float   xyzw
+// SV_TARGET                1   xyzw        1   TARGET   float   xyzw
+//
+ps_5_0
+dcl_globalFlags refactoringAllowed
+dcl_constantbuffer CB0[77], dynamicIndexed
+dcl_sampler s0, mode_default
+dcl_sampler s7, mode_default
+dcl_resource_texture2d (float,float,float,float) t0
+dcl_resource_texture2d (float,float,float,float) t7
+dcl_input_ps linear v6.xy
+dcl_input_ps linear v7.x
+dcl_input_ps linear v10.xyz
+dcl_input_ps linear v11.xyz
+dcl_output o0.xyzw
+dcl_output o1.xyzw
+dcl_temps 5
+sample_indexable(texture2d)(float,float,float,float) r0.xyzw, v6.xyxx, t0.wxyz, s0
+lt r1.x, r0.x, cb0[0].x
+discard_nz r1.x
+dp3 r1.x, v10.xyzx, v10.xyzx
+rsq r1.x, r1.x
+mul r1.xyz, r1.xxxx, v10.xyzx
+dp3 r1.w, -v11.xyzx, -v11.xyzx
+rsq r1.w, r1.w
+mul r2.xyz, r1.wwww, -v11.xyzx
+dp3_sat r2.x, r1.xyzx, r2.xyzx
+mad r2.yzw, -v11.xxyz, r1.wwww, -cb0[4].xxyz
+dp3 r1.w, r2.yzwy, r2.yzwy
+rsq r1.w, r1.w
+mul r2.yzw, r1.wwww, r2.yyzw
+dp3 r1.x, r1.xyzx, -cb0[4].xyzx
+add_sat r1.x, r1.x, cb0[2].y
+dp3_sat r1.y, -cb0[4].xyzx, r2.yzwy
+mul r1.y, r1.y, r1.y
+dp2 r1.y, r1.yyyy, cb0[2].zzzz
+add r1.y, r1.y, l(-0.500000)
+add r1.z, -r1.x, l(1.000000)
+mul r1.w, r1.z, r1.z
+mul r1.w, r1.w, r1.w
+mul r1.z, r1.w, r1.z
+mad r1.z, r1.y, r1.z, l(1.000000)
+add r1.w, -r2.x, l(1.000000)
+mul r2.x, r1.w, r1.w
+mul r2.x, r2.x, r2.x
+mul r1.w, r1.w, r2.x
+mad r1.y, r1.y, r1.w, l(1.000000)
+mul r2.xyz, r1.zzzz, cb0[9].xyzx
+mul r1.yzw, r1.yyyy, r2.xxyz
+mul r1.xyz, r1.xxxx, r1.yzwy
+mul r1.xyz, r1.xyzx, cb0[2].xxxx
+mul r2.xyz, cb0[1].xyzx, cb0[44].xyzx
+mad r1.xyz, cb0[45].xyzx, r1.xyzx, r2.xyzx
+sample_indexable(texture2d)(float,float,float,float) r2.xyz, v6.xyxx, t7.xyzw, s7
+mad r3.xyz, cb0[73].wwww, r0.yzwy, -cb0[76].xyzx
+mad r3.xyz, -r3.xyzx, r3.xyzx, cb0[75].xyzx
+sqrt r3.xyz, r3.xyzx
+mad r3.xyz, -cb0[74].xyzx, r3.xyzx, cb0[73].xyzx
+add r3.xyz, -r0.yzwy, r3.xyzx
+mad r0.yzw, r3.xxyz, r2.zzzz, r0.yyzw
+ftou r1.w, v7.x
+utof r1.w, r1.w
+add r1.w, r1.w, l(68.000000)
+ftou r1.w, r1.w
+mul r3.xyz, r1.xyzx, r0.yzwy
+mul r4.w, r0.x, cb0[44].w
+mul r2.xyzw, r2.yyyx, cb0[r1.w + 0].xyzw
+mad r0.xyz, -r0.yzwy, r1.xyzx, cb0[r1.w + 0].xyzx
+mad r4.xyz, r0.xyzx, r2.wwww, r3.xyzx
+mov r2.w, l(0)
+add o0.xyzw, r4.xyzw, r2.xyzw
+mov o1.xyzw, l(0,0,0,0)
+ret 
+// Approximately 56 instruction slots used
