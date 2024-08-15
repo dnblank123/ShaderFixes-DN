@@ -125,6 +125,6 @@ sample_indexable(texture2d)(float,float,float,float) r0.xyzw, v3.xyxx, t1.xyzw, 
 sample_indexable(texture2d)(float,float,float,float) r1.xyzw, v2.xyxx, t0.xyzw, s0
 add r0.xyz, r0.xyzx, -r1.xyzx
 mad o0.xyz, r0.wwww, r0.xyzx, r1.xyzx
-// mov o0.w, r1.w
+mov o0.w, r1.w
 ret 
 // Approximately 6 instruction slots used
