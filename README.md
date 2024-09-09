@@ -3,7 +3,7 @@ AMD CPU fix works on all settings
 </br>
 
 # TODO
-[Particle] Check the list of values for precision rather (v4 <= n) so that others particle aren't affected. 
+~~[Particle] Check the list of values for precision rather (v4 <= n) so that others particle aren't affected.~~
 </br>
 
 # Changes
@@ -11,4 +11,4 @@ There will be changes to the vertex or how it appears on the screen if you use t
 </br>
 
 # Limitation
-Other fixes only works on low settings.
+~~Other fixes only works on low settings.~~
