@@ -19,28 +19,32 @@
   // uint4 bitmask, uiDest;
   // float4 fDest;
 
-  // r0.x = cb0[8].x;
-  // r0.y = cb0[9].x;
-  // r0.z = cb0[10].x;
-  // r0.w = cb0[11].x;
-  // r1.x = cb0[8].y;
-  // r1.y = cb0[9].y;
-  // r1.z = cb0[10].y;
-  // r1.w = cb0[11].y;
-  // r2.x = cb0[8].z;
-  // r2.y = cb0[9].z;
-  // r2.z = cb0[10].z;
-  // r2.w = cb0[11].z;
-  // r3.x = cb0[8].w;
-  // r3.y = cb0[9].w;
-  // r3.z = cb0[10].w;
-  // r3.w = cb0[11].w;
+  // // r0.x = cb0[8].x;
+  // // r0.y = cb0[9].x;
+  // // r0.z = cb0[10].x;
+  // // r0.w = cb0[11].x;
+  // // r1.x = cb0[8].y;
+  // // r1.y = cb0[9].y;
+  // // r1.z = cb0[10].y;
+  // // r1.w = cb0[11].y;
+  // // r2.x = cb0[8].z;
+  // // r2.y = cb0[9].z;
+  // // r2.z = cb0[10].z;
+  // // r2.w = cb0[11].z;
+  // // r3.x = cb0[8].w;
+  // // r3.y = cb0[9].w;
+  // // r3.z = cb0[10].w;
+  // // r3.w = cb0[11].w;
   // r4.xyz = v2.xyz;
   // r4.w = 1;
-  // r5.x = r0.x * r4.x + r0.y * r4.y + r0.z * r4.z + r0.w * r4.w;//dot(r0.xyzw, r4.xyzw);
-  // r5.y = r1.x * r4.x + r1.y * r4.y + r1.z * r4.z + r1.w * r4.w;//dot(r1.xyzw, r4.xyzw);
-  // r5.z = r2.x * r4.x + r2.y * r4.y + r2.z * r4.z + r2.w * r4.w;//dot(r2.xyzw, r4.xyzw);
-  // r4.x = r3.x * r4.x + r3.y * r4.y + r3.z * r4.z + r3.w * r4.w;//dot(r3.xyzw, r4.xyzw);
+  // // r5.x = r0.x * r4.x + r0.y * r4.y + r0.z * r4.z + r0.w * r4.w;//dot(r0.xyzw, r4.xyzw);
+  // // r5.y = r1.x * r4.x + r1.y * r4.y + r1.z * r4.z + r1.w * r4.w;//dot(r1.xyzw, r4.xyzw);
+  // // r5.z = r2.x * r4.x + r2.y * r4.y + r2.z * r4.z + r2.w * r4.w;//dot(r2.xyzw, r4.xyzw);
+  // r5.x = cb0[8].x * r4.x + cb0[9].x * r4.y + cb0[10].x * r4.z + cb0[11].x * r4.w;
+  // r5.y = cb0[8].y * r4.x + cb0[9].y * r4.y + cb0[10].y * r4.z + cb0[11].y * r4.w;
+  // r5.z = cb0[8].z * r4.x + cb0[9].z * r4.y + cb0[10].z * r4.z + cb0[11].z * r4.w;
+
+  // //r4.x = r3.x * r4.x + r3.y * r4.y + r3.z * r4.z + r3.w * r4.w;//dot(r3.xyzw, r4.xyzw);
   // // r6.w = 0;
   // // r6.xyz = v1.xyz;
   // // r0.x = 0; //dot(r0.xyzw, r6.xyzw);
@@ -57,7 +61,7 @@
   // r1.xyzw = r2.xyzw + r1.xyzw;
   // r0.xyzw = cb0[2].xyzw * r0.zzzz;
   // r0.xyzw = r1.xyzw + r0.xyzw;
-  // r1.xyzw = cb0[3].xyzw * r4.xxxx;
+  // r1.xyzw = cb0[3].xyzw ;//r4.xxxx;
   // r0.xyzw = r1.xyzw + r0.xyzw;
   // r1.xyzw = cb0[4].xyzw * r0.xxxx;
   // r2.xyzw = cb0[5].xyzw * r0.yyyy;
@@ -123,14 +127,14 @@ dcl_output_siv o0.xyzw, position
 dcl_output o1.xyzw
 dcl_output o2.xy
 dcl_temps 2
-mul r0.xyzw, v2.yyyy, cb0[9].xyzw
-mad r0.xyzw, cb0[8].xyzw, v2.xxxx, r0.xyzw
-mad r0.xyzw, cb0[10].xyzw, v2.zzzz, r0.xyzw
-add r0.xyzw, r0.xyzw, cb0[11].xyzw
+mul r0.xyz, v2.yyyy, cb0[9].xyzx
+mad r0.xyz, cb0[8].xyzx, v2.xxxx, r0.xyzx
+mad r0.xyz, cb0[10].xyzx, v2.zzzz, r0.xyzx
+add r0.xyz, r0.xyzx, cb0[11].xyzx
 mul r1.xyzw, r0.xxxx, cb0[0].xyzw
 mad r1.xyzw, cb0[1].xyzw, r0.yyyy, r1.xyzw
-mad r1.xyzw, cb0[2].xyzw, r0.zzzz, r1.xyzw
-mad r0.xyzw, cb0[3].xyzw, r0.wwww, r1.xyzw
+mad r0.xyzw, cb0[2].xyzw, r0.zzzz, r1.xyzw
+add r0.xyzw, r0.xyzw, cb0[3].xyzw
 mul r1.xyzw, r0.xxxx, cb0[4].xyzw
 mad r1.xyzw, cb0[5].xyzw, r0.yyyy, r1.xyzw
 mad r1.xyzw, cb0[6].xyzw, r0.zzzz, r1.xyzw
