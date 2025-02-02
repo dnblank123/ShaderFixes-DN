@@ -520,20 +520,23 @@ dcl_input_ps linear v3.zw
 dcl_output o0.xyzw
 dcl_output o1.xyzw
 dcl_temps 3
-add r0.x, cb0[25].x, l(1.000000)
+// add r0.x, cb0[25].x, l(1.000000)
 // div_sat r0.x, cb0[25].x, r0.x
-add r0.y, -r0.x, l(1.9000)
+// add r0.y, -r0.x, l(1.9000)
 // mul r0.z, r0.y, r0.y
 // mul r0.z, r0.z, r0.z
 // mul r0.y, r0.z, r0.y
 // mad r0.y, r0.y, l(-0.500000), l(1.000000)
-mul r0.yzw, r0.yyyy, cb0[32].xxyz
+// mul r0.yzw, r0.yyyy, cb0[32].xxyz
 // mul r0.xyz, r0.xxxx, r0.yzwy
-mul r0.xyz, r0.xyzx, cb0[68].xyzx
-mul r1.xyz, cb0[24].xyzx, cb0[67].xyzx
+mov r0.xyz, cb0[68].xyzx //mul r0.xyz, r0.xyzx, cb0[68].xyzx
+// mul r1.xyz, cb0[24].xyzx, cb0[67].xyzx
 // mad r0.xyz, r0.xyzx, l(0.500000, 0.500000, 0.500000, 0.000000), r1.xyzx
 sample_indexable(texture2d)(float,float,float,float) r1.xyzw, v2.yzyy, t0.xyzw, s0
-mad r2.xyz, -cb0[1].xyzx, v3.wwww, cb0[1].xyzx
+
+// mad r2.xyz, -cb0[1].xyzx, v3.wwww, cb0[1].xyzx
+mov r2.xyzw, l(0,0,0,0)
+
 mad r0.xyz, r1.xyzx, r0.xyzx, -r2.xyzx
 mul o0.w, r1.w, cb0[67].w
 mad o0.xyz, v3.zzzz, r0.xyzx, r2.xyzx
